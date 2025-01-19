@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package rss;
+
+option go_package = "/protos";
+
+service RssService {
+    rpc GetRssFeed(GetRssFeedRequest) returns (RssFeed) {}
+    rpc GetRssFeeds(GetRssFeedsRequest) returns (RssFeeds) {}
+    rpc ValidateRssFeed(ValidateRssFeedRequest) returns (ValidateRssFeedResponse) {}
+}
+
+message RssFeedItem {
+    string url = 1;
+    string title = 2;
+    optional string description = 3;
+    optional string image_url = 4;
+    optional string date = 5;
+}
+
+message RssFeed {
+    string url = 1;
+    string title = 2;
+    optional string description = 3;
+    optional string image_url = 4;
+    repeated RssFeedItem items = 5;
+}
+
+message RssFeeds {
+    repeated RssFeed feeds = 1;
+}
+
+message GetRssFeedRequest {
+    string url = 1;
+}
+
+message GetRssFeedsRequest {
+    repeated string urls = 1;
+}
+
+message ValidateRssFeedRequest {
+    string url = 1;
+}
+
+message ValidateRssFeedResponse {
+    string url = 1;
+    bool is_valid = 2;
+}

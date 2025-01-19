@@ -1,0 +1,11 @@
+# IDEs
+.idea
+.vscode
+
+# Go related
+go.sum
+**/*.pb.go
+rss-grpc
+
+# Miscellaneous
+.DS_Store
