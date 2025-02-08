@@ -11,3 +11,26 @@ This service provides a robust interface for working with RSS feeds through gRPC
 - `ValidateRssFeed` checks if a given URL points to a valid RSS feed.
 
 **Development:** the project uses a Makefile to simplify common development tasks.
+
+**Deployment:** the service is deployed on Fly.io. If needed, replace the default `fly.toml` with the following contents:
+
+```toml
+app = 'XXX'
+primary_region = 'YYY'
+
+[build]
+
+[[services]]
+  internal_port = 50051
+  protocol = "tcp"
+
+  [[services.ports]]
+    handlers = ["tls"]
+    port = "443"
+
+  [services.ports.tls_options]
+    alpn = ["h2"]
+
+[[vm]]
+  size = 'shared-cpu-1x'
+```
