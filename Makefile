@@ -14,5 +14,9 @@ build: generate-protos
 build-and-run: build
 	./rss-grpc
 
+docker-build-and-run:
+	docker build --tag=rss-grpc --file=Dockerfile .
+	docker run --name=rss-grpc --publish=50051:50051 rss-grpc
+
 test:
 	go test -v ./...

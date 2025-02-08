@@ -1,0 +1,11 @@
+# IDEs
+.idea
+.vscode
+
+# Generated files
+rss-grpc
+
+# Miscellaneous
+Makefile
+README.md
+fly.toml

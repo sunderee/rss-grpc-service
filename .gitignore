@@ -9,3 +9,4 @@ rss-grpc
 
 # Miscellaneous
 .DS_Store
+fly.toml
